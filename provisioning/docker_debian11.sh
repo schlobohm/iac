@@ -4,7 +4,7 @@
 
 # Uninstall old versions
 # -- Older versions of Docker were called docker, docker.io, or docker-engine. If these are installed, uninstall them:
-sudo apt-get remove -y docker docker-engine docker.io containerd runc
+dpkg --remove docker docker-engine docker.io containerd runc
 
 # Install using the repository
 # -- Set up the repository
