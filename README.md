@@ -15,7 +15,7 @@ $ git grep -rl "{{PASSWORD_ROOT}}" . | xargs sed -i 's/\{\{PASSWORD_ROOT\}\}/pas
 
 ### Variables to replace
 
-- `{{IPADDRESS_LOKI}}`
+- `{{URI_LOKI}}`
 - `{{USERNAME_LOKI}}`
 - `{{PASSWORD_LOKI}}`
 
