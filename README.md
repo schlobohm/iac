@@ -21,4 +21,4 @@ $ git grep -rl "{{PASSWORD_ROOT}}" . | xargs sed -i 's/\{\{PASSWORD_ROOT\}\}/pas
 
 ## Copyright and license
 
-&copy; 2022 [Nick Schlobohm](mailto:nks@schlobohm.one). Licensed under the [GNU Affero General Public License, version 3](LICENSE).
+&copy; 2022 [Nick Schlobohm](https://schlobohm.one/~nks) &lt;[nks@schlobohm.one](mailto:nks@schlobohm.one)&gt;. Licensed under the [GNU Affero General Public License, version 3](LICENSE).
