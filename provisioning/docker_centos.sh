@@ -22,11 +22,10 @@ if [[ "$(cat /etc/centos-release)" == *"CentOS Stream release 9"* ]]; then
   wget http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libcgroup-0.41-19.el8.x86_64.rpm
   dnf install libcgroup-0.41-19.el8.x86_64.rpm -y
   
-  # install docker
-  dnf install -y --nobest docker-ce-cli containerd.io
-
+  # install Docker
+  dnf install -y --nobest docker-ce docker-ce-cli containerd.io docker-compose-plugin
 else
-  systemctl enable --now docker
+  dnf install -y --nobest docker-ce docker-ce-cli containerd.io docker-compose-plugin
 fi
 
 sudo systemctl enable --now docker
