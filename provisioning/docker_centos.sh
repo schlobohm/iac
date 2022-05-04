@@ -19,7 +19,9 @@ if [[ "$(cat /etc/centos-release)" == *"CentOS Stream release 9"* ]]; then
   
   # download libcgroup
   cd "$(mktemp -d)"
+  sudo dnf install -y wget
   wget http://mirror.centos.org/centos/8-stream/BaseOS/x86_64/os/Packages/libcgroup-0.41-19.el8.x86_64.rpm
+  sudo dnf remove -y wget
   dnf install libcgroup-0.41-19.el8.x86_64.rpm -y
   
   # install Docker
