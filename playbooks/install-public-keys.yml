@@ -1,0 +1,9 @@
+- name: Install public key on all hosts
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: Install public key
+      ansible.posix.authorized_key:
+        user: nks
+        state: present
+        key: "{{ lookup('file', '~/.ssh/id_ed25519.pub') }}"

@@ -1,0 +1,8 @@
+- name: Install qemu-guest-agent
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: Install the latest version of qemu-guest-agent
+      dnf:
+        name: qemu-guest-agent
+        state: latest

@@ -7,7 +7,16 @@ $ git clone git@github.com:schlobohm/iac
 $ cd iac/
 ```
 
-## Replace placeholder variables, etc.
+## Ansible
+```bash
+$ ansible-galaxy install -r requirements.yml
+$ ansible-playbook [... etc]
+```
+
+## The Other Stuff™️
+
+
+### Replace placeholder variables, etc.
 
 Run the `prepare-variables` script to generate a `VARIABLES` file. Edit that file as necessary, and then run the `prepare-variables` script again with the `inject` option. If you need to start again you can do a `git reset`.
 

@@ -1,0 +1,13 @@
+- name: Enable Cockpit
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: Install the latest version of Cockpit
+      dnf:
+        name: cockpit
+        state: latest
+    - name: Ensure Cockpit is enabled and started
+      ansible.builtin.systemd:
+        name: cockpit.socket
+        enabled: yes
+        state: started
