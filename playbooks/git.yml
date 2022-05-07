@@ -1,0 +1,8 @@
+- name: Install git
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: Install the latest version of git
+      dnf:
+        name: git
+        state: latest

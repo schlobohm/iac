@@ -1,0 +1,11 @@
+- name: Change ownership of /srv
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: Recursively give "{{ ansible_user }}" ownership of /srv
+      ansible.builtin.file:
+        path: /srv
+        state: directory
+        recurse: yes
+        owner: "{{ ansible_user }}"
+        group: "{{ ansible_user }}"

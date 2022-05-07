@@ -1,0 +1,8 @@
+- name: Add user to Docker group
+  hosts: "*"
+  become: yes
+  tasks:
+    - name: Adding "{{ ansible_user }}" to Docker group
+      user: name="{{ ansible_user }}"
+            groups=docker
+            append=yes
