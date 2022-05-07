@@ -1,0 +1,32 @@
+version: "3.9"
+
+services:
+  db:
+    image: mysql:5.7
+    volumes:
+      - db_data:/var/lib/mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: {{ROOTPW_WPSQL_NICKSCHLOBOHMCOM}}
+      MYSQL_DATABASE: wordpress
+      MYSQL_USER: wp
+      MYSQL_PASSWORD: {{PASSWORD_WPSQL_NICKSCHLOBOHMCOM}}
+
+  wordpress:
+    depends_on:
+      - db
+    image: wordpress:latest
+    volumes:
+      - wordpress_data:/var/www/html
+    ports:
+      - "8101:80"
+    restart: unless-stopped
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: {{USERNAME_WORDPRESS_NICKSCHLOBOHMCOM}}
+      WORDPRESS_DB_PASSWORD: {{PASSWORD_WORDPRESS_NICKSCHLOBOHMCOM}}
+      WORDPRESS_DB_NAME: wordpress
+
+volumes:
+  db_data: {}
+  wordpress_data: {}
