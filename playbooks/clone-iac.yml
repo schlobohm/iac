@@ -1,8 +1,8 @@
 - name: Clone IaC repo to /srv
   hosts: "*"
-  become: yes
   tasks:
     - name: Clone IaC repo to /srv
       ansible.builtin.git:
         repo: https://github.com/schlobohm/iac.git
         dest: /srv/iac
+        force: yes
