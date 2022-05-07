@@ -15,4 +15,4 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-grep --exclude-dir=".git" --exclude="README.md" -roh "{{[^{}]*}}" . | sed 's/[{}]//g' | uniq | awk '{ print $0 "=change_me" }' > .env
+grep --exclude-dir=".git" --exclude="README.md" -roh "{{[^{}]*}}" . | sed 's/[{}]//g' | uniq | awk '{ print $0 "=change_me" }' > VARIABLES
