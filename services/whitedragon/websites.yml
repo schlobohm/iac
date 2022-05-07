@@ -1,0 +1,50 @@
+version: "3.9"
+
+services:
+  wordpress_db:
+    image: mysql:5.7
+    volumes:
+      - wordpressdb_data:/var/lib/mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: {{ROOTPW_WPDB}}
+      MYSQL_USER: {{USERNAME_WPDB}}
+      MYSQL_PASSWORD: {{PASSWORD_WPDB}}
+    entrypoint:
+      sh -c "echo 'CREATE DATABASE IF NOT EXISTS nickschlobohmcom; CREATE DATABASE IF NOT EXISTS storesunqueasxyz;' > /docker-entrypoint-initdb.d/init.sql;
+        /usr/local/bin/docker-entrypoint.sh --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci"
+
+  nickschlobohmcom:
+    depends_on:
+      - wordpress_db
+    image: wordpress:latest
+    volumes:
+      - nickschlobohmcom_data:/var/www/html
+    ports:
+      - "8101:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: wordpress_db
+      WORDPRESS_DB_USER: {{USERNAME_WPDB}}
+      WORDPRESS_DB_PASSWORD: {{PASSWORD_WPDB}}
+      WORDPRESS_DB_NAME: nickschlobohmcom
+
+  storesunqueasxyz:
+    depends_on:
+      - wordpress_db
+    image: wordpress:latest
+    volumes:
+      - storesunqueasxyz_data:/var/www/html
+    ports:
+      - "8102:80"
+    restart: always
+    environment:
+      WORDPRESS_DB_HOST: wordpress_db
+      WORDPRESS_DB_USER: {{USERNAME_WPDB}}
+      WORDPRESS_DB_PASSWORD: {{PASSWORD_WPDB}}
+      WORDPRESS_DB_NAME: storesunqueasxyz
+
+volumes:
+  wordpressdb_data: {}
+  nickschlobohmcom_data: {}
+  storesunqueasxyz_data: {}
