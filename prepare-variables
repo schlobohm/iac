@@ -32,4 +32,4 @@ while test $# -gt 0; do
   exit 0
 done
 
-grep --exclude-dir=".git" --exclude="README.md" -roh "{{[^{}]*}}" . | sed 's/[{}]//g' | uniq | awk '{ print $0 "=change_me" }' > VARIABLES
+grep --exclude-dir=".git" --exclude="README.md" --exclude="$0" -roh "{{[^{} ]*}}" . | sed 's/[{}]//g' | uniq | awk '{ print $0 "=change_me" }' > VARIABLES
