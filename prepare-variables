@@ -32,5 +32,5 @@ while test $# -gt 0; do
   exit 0
 done
 
-grep --exclude-dir=".git" --exclude="README.md" --exclude="$0" -roh "{{[^{} ]*}}" . | sed 's/[{}]//g' | uniq | awk '{ print $0 "=change_me" }' > VARIABLES
+grep --exclude-dir=".git" --exclude="README.md" --exclude="$0" -roh "{{[^{} \$]*}}" . | sed 's/[{}]//g' | uniq | awk '{ print $0 "=change_me" }' > VARIABLES
 echo "VARIABLES file generated. Edit that file as necessary, and then run the 'prepare-variables' script again with the 'inject' option."
