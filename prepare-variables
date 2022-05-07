@@ -21,7 +21,12 @@ while test $# -gt 0; do
         while read l; do
             k="$(echo $l | cut -d '=' -f 1)" # key
             v="$(echo $l | cut -d '=' -f 2)" # value
-            grep --exclude-dir=".git" --exclude="README.md" -rl "{{$k}}" . | xargs sed -i "s/{{$k}}/$v/g"
+
+            # sanitize input before piping to sed
+            IFS= read -d '' -r < <(sed -e ':a' -e '$!{N;ba' -e '}' -e 's/[&/\]/\\&/g; s/\n/\\&/g' <<<"$v")
+            searchEscaped=${REPLY%$'\n'}
+
+            grep --exclude-dir=".git" --exclude="README.md" -rl "{{$k}}" . | xargs sed -i "s/{{$k}}/$searchEscaped/g"
         done <VARIABLES
       shift
       ;;
