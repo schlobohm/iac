@@ -7,17 +7,23 @@ $ git clone git@github.com:schlobohm/iac
 $ cd iac/
 ```
 
-## Replace placeholder variables as needed
+## Replace placeholder variables, etc.
+
+Run the `prepare-variables` script to generate a `VARIABLES` file. Edit that file as necessary, and then run the `prepare-variables` script again with the `inject` option. If you need to start again you can do a `git reset`.
 
 ```bash
-$ git grep -rl "{{PASSWORD_ROOT}}" . | xargs sed -i 's/\{\{PASSWORD_ROOT\}\}/password123/g'
+# Generate a VARIABLES file.
+$ ./prepare-variables
+
+# Change all occurrences of "change_me" to fit your needs.
+$ nvim VARIABLES # etc.
+
+# When ready, run the prepare-variables script again with the option "inject".
+$ ./prepare-variables inject
+
+# If you need to start again, do a git reset.
+$ git reset --hard HEAD
 ```
-
-### Variables to replace
-
-- `{{URI_LOKI}}`
-- `{{USERNAME_LOKI}}`
-- `{{PASSWORD_LOKI}}`
 
 ## Copyright and license
 
