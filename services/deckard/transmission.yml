@@ -1,0 +1,23 @@
+# Adapted from: https://docs.linuxserver.io/images/docker-transmission
+
+version: "2.1"
+services:
+  transmission:
+    image: lscr.io/linuxserver/transmission:latest
+    container_name: transmission
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ={{TIMEZONE}}
+      - TRANSMISSION_WEB_HOME=/flood-for-transmission/
+      # - USER={{USERNAME_GENERICSERVICE}}
+      # - PASS={{PASSWORD_GENERICSERVICE}}
+    volumes:
+      - {{PATH_TRANSMISSION}}/config:/config
+      - {{PATH_TRANSMISSION}}/downloads:/downloads
+      - {{PATH_TRANSMISSION}}/watch:/watch
+    ports:
+      - 9091:9091
+      - 51413:51413
+      - 51413:51413/udp
+    restart: unless-stopped
