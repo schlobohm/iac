@@ -4,7 +4,7 @@ services:
   nickschlobohmcom_db:
     image: mysql:5.7
     volumes:
-      - db_data:/var/lib/mysql
+      - nickschlobohmcom_db_data:/var/lib/mysql
     restart: unless-stopped
     environment:
       MYSQL_ROOT_PASSWORD: unneeded
@@ -17,7 +17,7 @@ services:
       - nickschlobohmcom_db
     image: wordpress:latest
     volumes:
-      - wordpress_data:/var/www/html
+      - nickschlobohmcom_wordpress_data:/var/www/html
     ports:
       - "8101:80"
     restart: unless-stopped
