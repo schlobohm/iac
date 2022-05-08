@@ -2,15 +2,13 @@ version: "3.9"
 
 services:
   db:
-    image: mysql:5.7
+    image: mariadb:10.7
     volumes:
       - db_data:/var/lib/mysql
-    restart: always
+    restart: unless-stopped
     environment:
-      MYSQL_ROOT_PASSWORD: somewordpress
-      MYSQL_DATABASE: wordpress
-      MYSQL_USER: wordpress
-      MYSQL_PASSWORD: wordpress
+      MARIADB_ROOT_PASSWORD: somewordpress
+      MARIADB_DATABASE: wordpress
 
   wordpress:
     depends_on:
@@ -23,8 +21,8 @@ services:
     restart: always
     environment:
       WORDPRESS_DB_HOST: db
-      WORDPRESS_DB_USER: wordpress
-      WORDPRESS_DB_PASSWORD: wordpress
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: somewordpress
       WORDPRESS_DB_NAME: wordpress
 volumes:
   db_data: {}
