@@ -5,6 +5,7 @@ services:
     image: itzg/minecraft-server
     ports:
       - 25565:25565
+      - 8123:8123 # for Dynmap, disable if not using that plugin
     environment:
       EULA: "TRUE"
       TYPE: "SPIGOT"
