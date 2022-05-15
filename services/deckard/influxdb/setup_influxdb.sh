@@ -21,6 +21,7 @@ Otherwise, press any key to continue."
 read -n1
 
 CONFPATH=/srv/influxdb
+cp docker-compose.yml $CONFPATH/.
 mkdir -p $CONFPATH
 cd $CONFPATH
 
@@ -37,7 +38,7 @@ INFLUXDB_ORG="${INFLUXDB_ORG:=schlobohm}"
 
 docker run --rm influxdb:2.2-alpine influxd print-config > config.yml
 
-docker compose -f influxdb.yml up -d
+docker compose up -d
 
 echo "Waiting 15 seconds..."
 wait 15
