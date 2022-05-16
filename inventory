@@ -3,6 +3,7 @@ nightfly
 whitedragon
 deckard
 severnaya
+steelmountain
 
 [datadyne:vars]
 ansible_ssh_user=nks
