@@ -1,9 +1,9 @@
 [datadyne]
-nightfly
-whitedragon
-deckard
-severnaya
-steelmountain
+nightfly.i.schlobohm.one
+whitedragon.i.schlobohm.one
+deckard.i.schlobohm.one
+severnaya.i.schlobohm.one
+steelmountain.i.schlobohm.one
 
 [datadyne:vars]
 ansible_ssh_user=nks
