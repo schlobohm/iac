@@ -1,0 +1,13 @@
+# https://github.com/itzg/docker-minecraft-server/blob/master/README.md#running-a-bukkitspigot-server
+
+services:
+  minecraft:
+    image: itzg/minecraft-server:latest
+    volumes:
+      - /srv/minecraft:/data
+    ports:
+      - "25565:25565"
+    restart: unless-stopped
+    environment:
+      TYPE: SPIGOT
+      EULA: "true"
